@@ -1,0 +1,36 @@
+/**
+ * Computer Ally Core — Frontend styles
+ * Supplements the child theme styles for plugin-rendered content.
+ */
+
+/* Repair portal responsive tweaks */
+@media (max-width: 640px) {
+  .ca-repair-portal .ca-stepper-content {
+    padding-bottom: 1rem;
+  }
+  .ca-repair-portal [style*="grid-template-columns: repeat(2"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Add-on request button interaction */
+.ca-request-addon {
+  transition: all 0.2s ease;
+}
+
+.ca-request-addon:hover {
+  background-color: var(--ca-primary);
+  color: var(--ca-primary-foreground);
+  border-color: var(--ca-primary);
+}
+
+.ca-request-addon:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ca-request-addon.requested {
+  background-color: var(--ca-status-diagnosing);
+  color: var(--ca-status-diagnosing-text);
+  border-color: var(--ca-status-diagnosing);
+}

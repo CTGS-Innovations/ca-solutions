@@ -1,0 +1,466 @@
+/*
+ Theme Name:   Computer Ally
+ Theme URI:    https://computerally.com
+ Description:  Hello Elementor child theme for Computer Ally — computer repair business portal.
+ Author:       Computer Ally
+ Author URI:   https://computerally.com
+ Template:     hello-elementor
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain:  computerally
+*/
+
+/* ============================================================
+   DESIGN TOKENS — Ported from Next.js globals.css
+   ============================================================ */
+
+:root {
+  /* Core palette */
+  --ca-background: #F5F6F8;
+  --ca-foreground: #2F3237;
+  --ca-card: #FFFFFF;
+  --ca-card-foreground: #2F3237;
+  --ca-primary: #4F6473;
+  --ca-primary-hover: #445668;
+  --ca-primary-foreground: #FAFAFA;
+  --ca-secondary: #DDE2E8;
+  --ca-secondary-foreground: #566170;
+  --ca-muted: #E0E4EA;
+  --ca-muted-foreground: #6B7280;
+  --ca-accent: #66B87A;
+  --ca-accent-hover: #55A369;
+  --ca-accent-foreground: #FFFFFF;
+  --ca-destructive: #EF4444;
+  --ca-destructive-foreground: #FAFAFA;
+  --ca-border: #BFC8D1;
+  --ca-input: #FFFFFF;
+  --ca-ring: #5A7389;
+  --ca-radius: 0.15rem;
+
+  /* Button action colors */
+  --ca-btn-success-bg: #66B87A;
+  --ca-btn-success-fg: #FFFFFF;
+  --ca-btn-light-blue-bg: #4AAFE0;
+  --ca-btn-light-blue-fg: #FFFFFF;
+
+  /* Panel colors */
+  --ca-panel-bg: #4F6473;
+  --ca-panel-fg: #FAFAFA;
+
+  /* Status badge colors */
+  --ca-status-checked-in: #DBEAFE;
+  --ca-status-checked-in-text: #1D4ED8;
+  --ca-status-diagnosing: #FEF3C7;
+  --ca-status-diagnosing-text: #B45309;
+  --ca-status-awaiting: #FFEDD5;
+  --ca-status-awaiting-text: #C2410C;
+  --ca-status-in-progress: #E0E7FF;
+  --ca-status-in-progress-text: #4338CA;
+  --ca-status-validation: #F3E8FF;
+  --ca-status-validation-text: #7C3AED;
+  --ca-status-ready: #DCFCE7;
+  --ca-status-ready-text: #15803D;
+  --ca-status-closed: #F3F4F6;
+  --ca-status-closed-text: #374151;
+}
+
+/* ============================================================
+   GLOBAL BASE STYLES
+   ============================================================ */
+
+body {
+  background-color: var(--ca-background);
+  color: var(--ca-foreground);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  border-color: var(--ca-border);
+}
+
+a {
+  color: var(--ca-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--ca-primary-hover);
+}
+
+/* ============================================================
+   PANEL COMPONENTS — Steel blue header cards
+   ============================================================ */
+
+.ca-panel {
+  border: 1px solid var(--ca-border);
+  border-radius: var(--ca-radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.ca-panel-primary {
+  border-color: var(--ca-panel-bg);
+}
+
+.ca-panel-heading {
+  background-color: var(--ca-panel-bg);
+  color: var(--ca-panel-fg);
+  padding: 0.75rem 1rem;
+}
+
+.ca-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.ca-panel-body {
+  background-color: var(--ca-card);
+  color: var(--ca-card-foreground);
+  padding: 1rem;
+}
+
+/* ============================================================
+   BUTTON COMPONENTS
+   ============================================================ */
+
+.ca-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--ca-radius);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.ca-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ca-ring);
+}
+
+.ca-btn-primary {
+  background-color: var(--ca-primary);
+  color: var(--ca-primary-foreground);
+}
+
+.ca-btn-primary:hover {
+  background-color: var(--ca-primary-hover);
+  color: var(--ca-primary-foreground);
+}
+
+.ca-btn-success {
+  background-color: var(--ca-btn-success-bg);
+  color: var(--ca-btn-success-fg);
+}
+
+.ca-btn-success:hover {
+  background-color: var(--ca-accent-hover);
+  color: var(--ca-btn-success-fg);
+}
+
+.ca-btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--ca-border);
+  color: var(--ca-foreground);
+}
+
+.ca-btn-outline:hover {
+  background-color: var(--ca-muted);
+}
+
+.ca-btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.ca-btn-xs {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+/* ============================================================
+   STATUS BADGES
+   ============================================================ */
+
+.ca-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.ca-badge-checked-in {
+  background-color: var(--ca-status-checked-in);
+  color: var(--ca-status-checked-in-text);
+}
+
+.ca-badge-diagnosing {
+  background-color: var(--ca-status-diagnosing);
+  color: var(--ca-status-diagnosing-text);
+}
+
+.ca-badge-awaiting {
+  background-color: var(--ca-status-awaiting);
+  color: var(--ca-status-awaiting-text);
+}
+
+.ca-badge-in-progress {
+  background-color: var(--ca-status-in-progress);
+  color: var(--ca-status-in-progress-text);
+}
+
+.ca-badge-validation {
+  background-color: var(--ca-status-validation);
+  color: var(--ca-status-validation-text);
+}
+
+.ca-badge-ready {
+  background-color: var(--ca-status-ready);
+  color: var(--ca-status-ready-text);
+}
+
+.ca-badge-closed {
+  background-color: var(--ca-status-closed);
+  color: var(--ca-status-closed-text);
+}
+
+/* ============================================================
+   CARD COMPONENT
+   ============================================================ */
+
+.ca-card {
+  background-color: var(--ca-card);
+  border: 1px solid var(--ca-border);
+  border-radius: var(--ca-radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.ca-card-header {
+  padding: 1.25rem 1.25rem 0;
+}
+
+.ca-card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+.ca-card-description {
+  color: var(--ca-muted-foreground);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.ca-card-body {
+  padding: 1.25rem;
+}
+
+/* ============================================================
+   PROCESS STEPPER
+   ============================================================ */
+
+.ca-stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.ca-stepper-step {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+.ca-stepper-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ca-stepper-circle {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 2px solid var(--ca-border);
+  background-color: var(--ca-card);
+  color: var(--ca-muted-foreground);
+}
+
+.ca-stepper-circle.active {
+  background-color: var(--ca-primary);
+  border-color: var(--ca-primary);
+  color: var(--ca-primary-foreground);
+}
+
+.ca-stepper-circle.completed {
+  background-color: var(--ca-accent);
+  border-color: var(--ca-accent);
+  color: var(--ca-accent-foreground);
+}
+
+.ca-stepper-line {
+  width: 2px;
+  flex-grow: 1;
+  min-height: 2rem;
+  background-color: var(--ca-border);
+  margin: 0.25rem 0;
+}
+
+.ca-stepper-line.completed {
+  background-color: var(--ca-accent);
+}
+
+.ca-stepper-content {
+  padding-bottom: 1.5rem;
+}
+
+.ca-stepper-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin: 0 0 0.25rem;
+}
+
+.ca-stepper-description {
+  color: var(--ca-muted-foreground);
+  font-size: 0.8125rem;
+  margin: 0;
+}
+
+/* ============================================================
+   TRUST INDICATORS
+   ============================================================ */
+
+.ca-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .ca-trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ca-trust-item {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--ca-card);
+  border: 1px solid var(--ca-border);
+  border-radius: var(--ca-radius);
+}
+
+.ca-trust-stat {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ca-primary);
+  margin: 0 0 0.25rem;
+}
+
+.ca-trust-label {
+  font-size: 0.875rem;
+  color: var(--ca-muted-foreground);
+  margin: 0;
+}
+
+/* ============================================================
+   SERVICES GRID
+   ============================================================ */
+
+.ca-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .ca-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .ca-services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   CTA BANNER
+   ============================================================ */
+
+.ca-cta-banner {
+  background-color: var(--ca-primary);
+  color: var(--ca-primary-foreground);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: var(--ca-radius);
+}
+
+.ca-cta-banner h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  color: var(--ca-primary-foreground);
+}
+
+.ca-cta-banner p {
+  margin: 0 0 1.5rem;
+  opacity: 0.9;
+}
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .print-receipt {
+    page-break-after: always;
+    padding: 2rem;
+  }
+
+  .print-receipt * {
+    color: black !important;
+  }
+}
+
+.print-only {
+  display: none;
+}

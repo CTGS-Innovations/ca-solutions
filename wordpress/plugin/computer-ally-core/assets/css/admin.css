@@ -1,0 +1,26 @@
+/**
+ * Computer Ally Core — Admin styles
+ */
+
+/* Ticket edit screen: QR Code meta box */
+.ca-qr-block img {
+  border: 1px solid #ddd;
+  padding: 8px;
+  background: #fff;
+}
+
+/* Status badge in list table */
+.column-ca_status .ca-badge {
+  display: inline-block;
+}
+
+/* Meta box form alignment */
+#ca-ticket-details .form-table th {
+  width: 140px;
+}
+
+/* Overdue indicator */
+.column-ca_overdue {
+  width: 60px;
+  text-align: center;
+}
