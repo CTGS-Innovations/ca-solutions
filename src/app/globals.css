@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 10% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 10% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 10% 20%;
+    --primary: 207 17% 37%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 210 15% 90%;
+    --secondary-foreground: 210 10% 40%;
+    --muted: 220 15% 90%;
+    --muted-foreground: 220 10% 50%;
+    --accent: 145 38% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 20% 80%;
+    --input: 0 0% 100%;
+    --ring: 207 17% 45%;
+    --radius: 0.15rem;
+
+    /* Button action colors */
+    --button-success-background: 145 38% 56%;
+    --button-success-foreground: 0 0% 100%;
+    --button-action-green-background: 145 38% 56%;
+    --button-action-green-foreground: 0 0% 100%;
+    --button-action-light-blue-background: 198 65% 60%;
+    --button-action-light-blue-foreground: 0 0% 100%;
+
+    /* Panel colors */
+    --panel-primary-background: 207 17% 37%;
+    --panel-primary-foreground: 0 0% 98%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-inter), Inter, Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* Panel component classes */
+  .panel {
+    @apply border shadow-sm mb-4 rounded;
+    border-color: hsl(var(--border));
+  }
+
+  .panel-primary {
+    border-color: hsl(var(--panel-primary-background));
+  }
+
+  .panel-heading {
+    @apply px-4 py-3;
+    background-color: hsl(var(--panel-primary-background));
+    color: hsl(var(--panel-primary-foreground));
+  }
+
+  .panel-title {
+    @apply flex items-center gap-2 font-semibold text-sm;
+  }
+
+  .panel-body {
+    @apply p-4;
+    background-color: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+  }
+
+  /* Button component classes */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium rounded transition-colors;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-1;
+    focus-ring-color: hsl(var(--ring));
+  }
+
+  .btn-primary {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  .btn-primary:hover {
+    background-color: hsl(207 17% 32%);
+  }
+
+  .btn-success {
+    background-color: hsl(var(--button-success-background));
+    color: hsl(var(--button-success-foreground));
+  }
+  .btn-success:hover {
+    background-color: hsl(145 38% 48%);
+  }
+
+  .btn-xs {
+    @apply px-2 py-1 text-xs;
+  }
+
+  .btn-icon {
+    @apply p-0 w-8 h-8 flex items-center justify-center;
+  }
+
+  .btn-link {
+    @apply bg-transparent px-0 py-0 underline-offset-4 hover:underline;
+    color: hsl(var(--primary));
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .print-receipt {
+    page-break-after: always;
+    padding: 2rem;
+  }
+
+  .print-receipt * {
+    color: black !important;
+  }
+}
+
+.print-only {
+  display: none;
+}
